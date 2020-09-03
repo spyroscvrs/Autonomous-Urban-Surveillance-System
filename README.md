@@ -42,7 +42,13 @@ Requires Linux Ubuntu 16.04 (or more recent version) / Python 3
 **6) OpenScenario file generation**<br/>
 		*GPU/CPU: ``` python ToSimulation.py --input_video test.mp4 --input_coords test.txt --output_name test```<br/>
 		(test.xosc file in Results Folder)
-
+		
+## Photos
+The photos were obtained in the Advanced Robotics at Queen Mary using the UR5 robot <br/>
+<img src="Tracker.PNG" height="30%" width="30%">
+<img src="calibr.PNG" height="30%" width="30%">
+<img src="object_Detect1.PNG" height="30%" width="30%">
+<img src="simulator2.PNG" height="30%" width="30%">
 
 ## Author
 
