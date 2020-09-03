@@ -45,17 +45,17 @@ Requires Linux Ubuntu 16.04 (or more recent version) / Python 3
 		
 ## Photos
 **Object Detector**<br/>
-<img src="object_Detect1.PNG" height="30%" width="30%"><br/>
+<img src="object_Detect1.PNG" height="50%" width="50%"><br/>
 
 
 **Object Tracker**<br/>
-<img src="Tracker.PNG" height="30%" width="30%"><br/>
+<img src="Tracker.PNG" height="50%" width="50%"><br/>
 
 **Depth Estimator**<br/>
-<img src="calibr.PNG" height="30%" width="30%"><br/>
+<img src="calibr.PNG" height="50%" width="50%"><br/>
 
-**Simulator**<br/>
-<img src="simulator2.PNG" height="30%" width="30%">
+**Simulator (not provided)**<br/>
+<img src="simulator2.PNG" height="50%" width="50%">
 
 
 ## Author
