@@ -1,110 +1,47 @@
-# Robot Anticipation Of Human Actions Using an RGB-D sensor
+# Scene understanding and pedestrian/vehicle tracking from traffic cameras
 
-The project is aimed to allow a robot to anticipate human intentions while interaction partners are still performing their action. Specifically, two actions are anticipated from the UR5 robot. When the human decides for an object to pick and reaches to it, the robot arm must pick the other object. This way, a feeling of cooperation between the interaction partner and the robot will be created.
+The increase of vehicles in urban environments has raised the importance of decreasing car accidents, managing traffic congestion and building automated transportation systems. In this repository, an automatic traffic surveillance system is proposed that uses traffic camera videos of different resolutions. The objective is implemented in three core steps, the first step is the object detection on the scene, the second objective is multiple object tracking and thirdly is the depth estimation which translates coordinates on the image to coordinates on the road plane. The automatic traffic surveillance system provides, obtained trajectories of vehicles and pedestrians, estimated instantaneous and average speeds and translation of tracked trajectories to OpenScenario format.
 
 ## Getting Started
 
-One Ubuntu 16.04 LTS machine and a Windows 10 machine is needed.
+Requires Linux Ubuntu 16.04 (or more recent version) / Python 3
+
+### Setup
 
 
-### Prerequisites
+1) **enviroment.yml file provides conda enviroment named "app" with installed dependencies.**
 
-* ROS-kinetic: http://wiki.ros.org/kinetic/Installation/Ubuntu  <br/>
-* Catkin workspace: http://wiki.ros.org/ROS/Tutorials/InstallingandConfiguringROSEnvironment  <br/>
-* ROS Industrial Universal Robots: https://github.com/ros-industrial/universal_robot <br/>
-* Visual Studio 2017: https://docs.microsoft.com/en-us/visualstudio/ide/?view=vs-2017 <br/>
-* Xbox Kinect v2 sensor <br/>
-* Kinect to PC adaptor <br/>
+2) **Make sure Detectron2 is installed in the conda enviroment. ( instructions: https://github.com/facebookresearch/detectron2/blob/master/INSTALL.md )**
 
-### SETUP
-
-1) **Get [ROS kinetic](http://wiki.ros.org/kinetic/Installation/Ubuntu) on Linux 16.04** <br/>
-
-2) **Follow instructions to create [catkin workspace](http://wiki.ros.org/ROS/Tutorials/InstallingandConfiguringROSEnvironment)** <br/>
-
-3) **Install [ROS Industrial Universal Robots](https://github.com/ros-industrial/universal_robot)** <br/>
-
-Open terminal and execute:
-```
-sudo apt-get install ros-kinetic-universal-robot
-```
-
-4) **Download files from my GIT repository** <br/>
-
-File 'listener.py' is needed into the Ubuntu machine inside catkin enviroment, into /src folder. <br/>
-
-5) **Download [Visual Studio 2017](https://docs.microsoft.com/en-us/visualstudio/ide/?view=vs-2017) on Windows Machine** <br/>
-
-6) **Connect Xbox Kinect v2 to the Windows Machine using an adaptor** <br/>
-
-7) **On Ubuntu Machine open terminal and run** <br/>
-```
-hostname -I
-```
-
-8) **Go to BodyBasics-WPF folder on Windows** <br/>
-
-Certain changes are needed to use the application. <br/>
-Open **MainWindow.xaml.cs** using Visual studio or any other text editor.<br/>
-Go to line **200**, change the IP, to the IP of the Ubuntu Machine obtained in step 7. <br/> 
-
-### TESTING
-
-The application is ready to be simulated using Gazebo simulator. <br/>
-**On Ubuntu Machine side:** <br/> 
-Make sure for every terminal/shell you are directed to the catkin enviroment. <br/>
-Example: <br/>
-```
-cd catkin_ws
-```
-and then source the setup file for your shell using the command:
-```
-source devel/setup.bash
-```
-
-1) Open terminal and run Gazebo simulation
-
-```
-roslaunch ur_gazebo ur5.launch
-```
-
-2) Open new terminal for setting up the MoveIt! nodes to allow motion planning
-
-```
-roslaunch ur5_moveit_config ur5_moveit_planning_execution.launch sim:=true
-```
-
-3) Open new terminal for starting up RViz with a configuration
-
-```
-roslaunch ur5_moveit_config moveit_rviz.launch config:=true
-```
-
-4) Open new terminal to run listener node
-
-```
-cd src
-```
-```
-python listener.py
-```
+3) **Conda enviroment provides pytorch version only for CPU, make sure that a pytorch version with CUDA is installed if application to be tested on GPU.**
 
 
-**On Windows Machine side:** <br/> 
+### Instructions
 
-Open the BodyBasics-WPF folder and then open the BodyBasics-WPF.sln application using Visual Studio 2017 and click start. 
 
-## Photos
-The photos were obtained in the Advanced Robotics at Queen Mary using the UR5 robot <br/>
-<img src="img/Pic1.jpg" height="30%" width="30%">
-<img src="img/Pic2.jpg" height="30%" width="30%">
-<img src="img/Pic4.jpg" height="30%" width="30%">
+**1) Create and activate Conda enviroment**
+		```conda env create -f environment.yml```
+		```conda activate app```
 
-## Video
+**2) TFL traffic cameras video acquisition**
+		*GPU/CPU: ```python get_videos.py```
 
-The video was obtained in the Advanced Robotics at Queen Mary using the UR5 robot <br/>
+(Suppose having a video file called "test.mp4")
+**3) Run Application**
+		*CPU: ```python Overall.py test.mp4 --coordfile test.txt```
+		*GPU: ```python Overall.py test.mp4 --coordfile test.txt --use_cuda True```
 
-https://www.youtube.com/watch?v=aitVCOc7kYU
+**4) Trajectories plot**
+		*GPU/CPU: ```python get_trajectory.py --input_coords test.txt --output_name test```
+		(Resulting plot shown in Results Folder)
+
+**5) Speed Estimates**
+		*GPU/CPU: ```python get_speed.py --input_video test.mp4 --input_coords test.txt --output_speeds test_speed.txt```
+		(test_speed.txt file in Results Folder)
+
+**6) OpenScenario file generation**
+		*GPU/CPU: ``` python ToSimulation.py --input_video test.mp4 --input_coords test.txt --output_name test```
+		(test.xosc file in Results Folder)
 
 
 ## Author
@@ -114,6 +51,6 @@ Email: sv.couvaras@gmail.com
 
 ## Acknowledgments
 
-* [Dr Lorenzo Jamone](http://www.eecs.qmul.ac.uk/profiles/jamonelorenzo.html)
-* [Mr Gokhan Solak](http://www.eecs.qmul.ac.uk/profiles/solakgokhan.html)
-* [Mr Brice Denoun](http://eecs.qmul.ac.uk/profiles/denounbricedavid.html)
+* [Prof. Demiris Yiannis](https://www.imperial.ac.uk/people/y.demiris)
+* [Mr Rodrigo Chacon Quesada](https://www.imperial.ac.uk/personal-robotics/people/phd-students/rodrigo-chacon-quesada/)
+* [Transport Systems and Logistics Laboratory](https://www.tslab.org/)
