@@ -44,11 +44,19 @@ Requires Linux Ubuntu 16.04 (or more recent version) / Python 3
 		(test.xosc file in Results Folder)
 		
 ## Photos
-The photos were obtained in the Advanced Robotics at Queen Mary using the UR5 robot <br/>
-<img src="Tracker.PNG" height="30%" width="30%">
-<img src="calibr.PNG" height="30%" width="30%">
-<img src="object_Detect1.PNG" height="30%" width="30%">
+**Object Detector**<br/>
+<img src="object_Detect1.PNG" height="30%" width="30%"><br/>
+
+
+**Object Tracker**<br/>
+<img src="Tracker.PNG" height="30%" width="30%"><br/>
+
+**Depth Estimator**<br/>
+<img src="calibr.PNG" height="30%" width="30%"><br/>
+
+**Simulator**<br/>
 <img src="simulator2.PNG" height="30%" width="30%">
+
 
 ## Author
 
