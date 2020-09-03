@@ -1,0 +1,6 @@
+classes= 11
+train  = E:/Yolo_mark-master/Yolo_mark-master/x64/Release/data/train.txt
+valid  = E:/Yolo_mark-master/Yolo_mark-master/x64/Release/data/train.txt
+names = data/obj.names
+backup = backup/
+
