@@ -19,27 +19,27 @@ Requires Linux Ubuntu 16.04 (or more recent version) / Python 3
 ### Instructions
 
 
-**1) Create and activate Conda enviroment**
+**1) Create and activate Conda enviroment**<br/>
 		```conda env create -f environment.yml```
 		```conda activate app```
 
-**2) TFL traffic cameras video acquisition**
+**2) TFL traffic cameras video acquisition**<br/>
 		*GPU/CPU: ```python get_videos.py```
 
 (Suppose having a video file called "test.mp4") <br/>
-**3) Run Application**
+**3) Run Application**<br/>
 		*CPU: ```python Overall.py test.mp4 --coordfile test.txt``` <br/>
 		*GPU: ```python Overall.py test.mp4 --coordfile test.txt --use_cuda True```
 
-**4) Trajectories plot**
+**4) Trajectories plot**<br/>
 		*GPU/CPU: ```python get_trajectory.py --input_coords test.txt --output_name test```<br/>
 		(Resulting plot shown in Results Folder)
 
-**5) Speed Estimates**
+**5) Speed Estimates**<br/>
 		*GPU/CPU: ```python get_speed.py --input_video test.mp4 --input_coords test.txt --output_speeds test_speed.txt```<br/>
 		(test_speed.txt file in Results Folder)
 
-**6) OpenScenario file generation**
+**6) OpenScenario file generation**<br/>
 		*GPU/CPU: ``` python ToSimulation.py --input_video test.mp4 --input_coords test.txt --output_name test```<br/>
 		(test.xosc file in Results Folder)
 
