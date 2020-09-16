@@ -63,6 +63,10 @@ Requires Linux Ubuntu 16.04 (or more recent version) / Python 3
 [Spyridon Couvaras](https://www.linkedin.com/in/spyridon-couvaras-8611a714a/)  <br/>
 Email: sv.couvaras@gmail.com
 
+## Video
+
+https://www.youtube.com/watch?v=nomez0_uHzo
+
 ## Acknowledgments
 
 * [Prof. Demiris Yiannis](https://www.imperial.ac.uk/people/y.demiris)
